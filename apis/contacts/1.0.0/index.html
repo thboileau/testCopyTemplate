@@ -1,0 +1,576 @@
+---
+title: Contacts API par version
+type: apis
+layout: rwadef_4
+version: "1.0.0"
+contract:
+  mediaTypes:
+  - "application/json"
+  sections:
+    c6df14b2-2e7a-48bd-8476-5a838001cb8d:
+      name: "General"
+      elementOrder:
+      - "#/contract/texts/fb15cde5-d861-4b22-b4d4-7688f39ac70d"
+      - "#/contract/texts/a74ab5e8-3c73-4131-9c46-4297141a44e3"
+      - "#/contract/types/509ae2b4-6a55-4fb7-ac10-996f6a9c7ce1"
+    b5406dad-a9b7-4ca0-b172-aaeadc865b90:
+      name: "Contacts"
+      description: ""
+      elementOrder:
+      - "#/contract/resources/46c3b45a-0360-4ffe-bbd3-513894755f2c"
+      - "#/contract/resources/a47b8f7d-2c09-45c9-8860-e92b6d6187ed"
+      - "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+    f2221685-9c6c-4a96-8f0b-da1f6b11fbb9:
+      name: "Companies"
+      elementOrder:
+      - "#/contract/resources/bb7c1158-e20e-4b1e-934c-4334fa6d925f"
+      - "#/contract/resources/f2aba46d-5371-455f-b316-9e15043914c1"
+      - "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+  securitySchemes:
+    b3ae5bda-bfdb-4431-9eb0-67137e9838e1:
+      name: "HTTP_BASIC"
+      type: "basic"
+      description: "All GET methods are public, meaning that *you can read all the data*. Write operations require authentication and therefore are forbidden to the general public."
+      describedBy: {}
+  resources:
+    bb7c1158-e20e-4b1e-934c-4334fa6d925f:
+      path: "/companies/"
+      section: "#/contract/sections/f2221685-9c6c-4a96-8f0b-da1f6b11fbb9"
+      operations:
+        ffdbc461-6de2-46ad-b0a4-aa4c114d24ae:
+          name: "Load the list of Companies"
+          method: "GET"
+          description: "Loads a list of Company"
+          tags:
+          - "Companies"
+          queryParameters:
+            b73b4fd7-5f92-437f-8e37-87798c95884e:
+              type: "#/components/queryParameters/cb8e7792-0703-42b3-9dea-c082086916d6"
+            c64d1974-fc8e-4c55-8b62-c6cd638b25cb:
+              type: "#/components/queryParameters/5901db1f-da69-4006-9390-c248fd1d38eb"
+            "28d3bb06-dda0-47f6-86c4-6ee765b6c5ea":
+              type: "#/components/queryParameters/85ccf05e-735e-4319-8ca7-aab6a7194c53"
+            "3e32cd82-5073-4ce8-8ec7-faa162f9734a":
+              name: "name"
+              type: "STRING"
+              description: "Allows to filter the collection of results by the value of field `name`"
+              examples:
+                "770d6083-6996-453c-a643-b37bc6417b3b":
+                  value: "George Street Brewery"
+          responses:
+            "1d25c0e3-8090-4d60-ad3d-08cf10668173":
+              status: "200"
+              description: "Status 200"
+              headers:
+                "3d33d072-215d-4e34-a1ad-c2d14794411d":
+                  type: "#/components/headers/4c757c36-0ebe-4a14-881a-2c9855c2ce1e"
+                "2bc18a58-0fc3-4319-ada1-d0a368a4c573":
+                  type: "#/components/headers/fd6743b2-82c3-42a6-8f09-ce141bf74b5e"
+                "0b353a72-bc1b-4ce8-a380-c3a930f4c60b":
+                  type: "#/components/headers/3c5ea6d8-2454-4b3e-afda-8ebbb0b69afe"
+                c09e594d-9e9d-4ab5-bbd8-c6634383f90c:
+                  type: "#/components/headers/62aa46d6-002f-4fe5-8044-83d2d6278028"
+              bodies:
+                e5e43812-92f4-4194-a37e-9192c4ff2547:
+                  type: "ARRAY"
+                  items:
+                    type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+                  examples:
+                    "704b11c6-0dcc-45c6-af29-c3c90dc57cbb":
+                      value: "[{\n  \"id\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\",\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}]"
+            "80a66190-adab-4e3a-9df5-f95a841c3e82":
+              status: "400"
+              componentName: "Status 400"
+              reference: "#/components/responses/7f0e2971-15be-496d-aae2-d12a64016492"
+        daddd4ca-f120-49e3-8022-3b15cbfdc9c4:
+          name: "Create a new Company"
+          method: "POST"
+          description: "Adds a Company"
+          tags:
+          - "Companies"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          bodies:
+            f5754519-1af9-4614-9bdc-f9c6a6b84fb3:
+              type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+              examples:
+                "1f1814f7-8893-42c2-8f43-f84fb6e65c1d":
+                  value: "{\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+          responses:
+            e179510f-3526-4eb1-ac3d-65e104e39691:
+              status: "200"
+              description: "Status 200"
+              bodies:
+                cb93e458-6ea7-4b32-a1d5-8ff0a823da6a:
+                  type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+                  examples:
+                    "34be4696-45b3-4837-8c42-d789f939b2eb":
+                      value: "{\n  \"id\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\",\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+    f2aba46d-5371-455f-b316-9e15043914c1:
+      path: "/companies/{companyid}"
+      section: "#/contract/sections/f2221685-9c6c-4a96-8f0b-da1f6b11fbb9"
+      pathVariables:
+        "6957286d-b704-46a4-8870-26599ea48d80":
+          type: "#/components/pathVariables/17f2fd39-f376-4cba-a186-1b50f899a393"
+      operations:
+        "35e5c735-c12b-4819-8e74-c639e45cfde0":
+          name: "Load a Company"
+          method: "GET"
+          description: "Loads a Company"
+          tags:
+          - "Companies"
+          responses:
+            "708053d7-b49f-4428-9158-4c3bea2f92ef":
+              status: "200"
+              description: "Status 200"
+              bodies:
+                "63ee81ff-7a37-4148-a0da-a7ea5e453ab9":
+                  type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+                  examples:
+                    "12edddda-8c87-450a-a8e0-0f3e02ba00bc":
+                      value: "{\n  \"id\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\",\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+            "2938254d-de87-4d40-a113-a7206a976442":
+              status: "400"
+              componentName: "Status 400"
+              reference: "#/components/responses/7f0e2971-15be-496d-aae2-d12a64016492"
+        "263c7a69-239e-4f4c-be53-286e67a050f5":
+          name: "Update a Company"
+          method: "PUT"
+          description: "Updates a Company"
+          tags:
+          - "Companies"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          bodies:
+            "05fdfd79-b4a7-4bdd-8c4a-dc7d2ede65cd":
+              type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+              examples:
+                adc9ccac-b8fd-4347-b83d-ad72e3c864c9:
+                  value: "{\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+          responses:
+            "06e8ba99-3d31-48e5-9ca6-9b7e8c13b929":
+              status: "200"
+              description: "Status 200"
+              bodies:
+                "58fee62b-d0d9-414f-aef3-d6d44bc93d15":
+                  type: "#/contract/types/050004af-fb51-4a2a-9013-bdd5e20f4075"
+                  examples:
+                    b70f830c-8176-4f39-8a5c-1f61ca611f0a:
+                      value: "{\n  \"id\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\",\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+        "3101b92b-61ca-4df6-964f-f407e96a89cf":
+          name: "Delete a Company"
+          method: "DELETE"
+          description: "Deletes a Company"
+          tags:
+          - "Companies"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          responses:
+            "8c4bf9d3-3034-4cc5-9094-29b803866392":
+              status: "200"
+              description: "Status 200"
+    "46c3b45a-0360-4ffe-bbd3-513894755f2c":
+      path: "/contacts/"
+      section: "#/contract/sections/b5406dad-a9b7-4ca0-b172-aaeadc865b90"
+      operations:
+        "6704019d-4284-435d-93bb-0d03d39b2f58":
+          name: "Get the list of Contacts"
+          method: "GET"
+          description: "Loads a list of Contact"
+          tags:
+          - "Contacts"
+          queryParameters:
+            da68ff49-b876-43c0-85c6-fae458701891:
+              type: "#/components/queryParameters/cb8e7792-0703-42b3-9dea-c082086916d6"
+            "4dfae3f8-6d3c-492a-a549-ed2babccacdc":
+              type: "#/components/queryParameters/5901db1f-da69-4006-9390-c248fd1d38eb"
+            f6bd9c74-3a85-4a93-96fe-9c149eaf39dd:
+              type: "#/components/queryParameters/85ccf05e-735e-4319-8ca7-aab6a7194c53"
+            "8e7f9a65-4d1d-4f0c-a0b1-e8dd3936891c":
+              name: "firstName"
+              type: "STRING"
+              description: "Allows to filter the collection of results by the value of field `firstName`"
+              examples:
+                "25a1cc0a-dbd8-4281-a3d1-9129c335c901":
+                  value: "John"
+            "3115fd1b-3909-4625-b037-434f849c4f37":
+              name: "lastName"
+              type: "STRING"
+              description: "Allows to filter the collection of results by the value of field `lastName`"
+              examples:
+                "1e829c62-242b-40f4-b5f7-7108bebe42ec":
+                  value: "Doe"
+            a7480578-671b-410c-a33a-94e20f562112:
+              name: "active"
+              type: "BOOLEAN"
+              description: "Allows to filter the collection of results by the value of field `active`"
+              examples:
+                "2b1d9f5c-f9ca-44e1-aa53-bc7703c44088":
+                  value: true
+                ecb4d34d-5155-4e59-b733-11bec661ceeb:
+                  value: false
+            "04e28f10-b82e-40da-9c67-475060374687":
+              name: "company"
+              type: "STRING"
+              description: "Allows to filter the collection of results by the value of field `company`"
+              examples:
+                "005072ef-4c23-4c11-b2eb-8ae5f3859b98":
+                  value: "0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f"
+          responses:
+            "6c047f31-2869-4de5-b1f4-a0134ca081cf":
+              status: "200"
+              description: "Status 200"
+              headers:
+                "5af1d2fe-16ed-4ac8-9d9a-a78f26585e87":
+                  type: "#/components/headers/4c757c36-0ebe-4a14-881a-2c9855c2ce1e"
+                "52071b8e-4aab-40f7-83cf-568ed388c925":
+                  type: "#/components/headers/fd6743b2-82c3-42a6-8f09-ce141bf74b5e"
+                d47dcf9d-abfd-4a62-b2a3-5cd30e5cba86:
+                  type: "#/components/headers/3c5ea6d8-2454-4b3e-afda-8ebbb0b69afe"
+                c97227f0-f7db-438b-af23-35bdc0a778a4:
+                  type: "#/components/headers/62aa46d6-002f-4fe5-8044-83d2d6278028"
+              bodies:
+                "9e622599-4df9-418e-87cc-4c9efdbf57b4":
+                  type: "ARRAY"
+                  items:
+                    type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+                  examples:
+                    "63157651-d60a-4281-b434-0d37fc083570":
+                      value: "[{\n  \"id\": \"0e8dd830-ad98-11e6-bf2e-47644ada7c0f\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}]"
+            a9aa2889-6683-434d-9f0f-0bf541c78995:
+              status: "400"
+              componentName: "Status 400"
+              reference: "#/components/responses/7f0e2971-15be-496d-aae2-d12a64016492"
+        "2ae4afca-cf7e-474c-887b-9ace728ed87c":
+          name: "Create a Contact"
+          method: "POST"
+          description: "Adds a Contact"
+          tags:
+          - "Contacts"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          bodies:
+            de18e936-250e-429d-acb9-35af56ba091c:
+              type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+              examples:
+                "75e35322-227c-417b-ab83-57a986934620":
+                  value: "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+          responses:
+            "16799c96-c772-4004-8099-5b6c8d6f5371":
+              status: "200"
+              description: "Status 200"
+              bodies:
+                "041628c9-02fc-4ab3-9b8b-b0b67e1f1c85":
+                  type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+                  examples:
+                    a31117b6-d17a-425c-82b5-5f8a0a3e275b:
+                      value: "{\n  \"id\": \"0e8dd830-ad98-11e6-bf2e-47644ada7c0f\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+    a47b8f7d-2c09-45c9-8860-e92b6d6187ed:
+      path: "/contacts/{contactid}"
+      section: "#/contract/sections/b5406dad-a9b7-4ca0-b172-aaeadc865b90"
+      pathVariables:
+        fd683c34-11a3-45fc-a68f-bc868b6a0900:
+          type: "#/components/pathVariables/df804f18-e92c-455c-968b-04bd315b934f"
+      operations:
+        cf606e86-3987-4f31-bd23-5bdc1f9241b2:
+          name: "Load a Contact"
+          method: "GET"
+          description: "Loads a Contact"
+          tags:
+          - "Contacts"
+          responses:
+            "674c0b55-f195-46f4-9b0f-d9cd31586b2a":
+              status: "200"
+              description: "Status 200"
+              bodies:
+                "84f8b31b-8cf0-4ca5-b59f-c94fca79225c":
+                  type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+                  examples:
+                    "1e20339e-31c9-4eb1-9a87-086ae8858391":
+                      value: "{\n  \"id\": \"0e8dd830-ad98-11e6-bf2e-47644ada7c0f\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+            "1945f946-b917-42a4-acd6-479eaabd65a3":
+              status: "400"
+              componentName: "Status 400"
+              reference: "#/components/responses/7f0e2971-15be-496d-aae2-d12a64016492"
+        e3d034f1-2036-4603-8d7a-29613a0900bf:
+          name: "Update a Contact"
+          method: "PUT"
+          description: "Updates a Contact"
+          tags:
+          - "Contacts"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          bodies:
+            "2a4ae0b8-2a22-445a-a5d9-20461ba9e1b4":
+              type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+              examples:
+                d4a361cb-8008-48ef-b412-29a48fd78385:
+                  value: "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+          responses:
+            b16c201d-a943-47df-83a5-fa7843203fdb:
+              status: "200"
+              description: "Status 200"
+              bodies:
+                f06871d3-63fc-491e-b35d-7e8a42b024f9:
+                  type: "#/contract/types/f70944cc-99cb-4954-b949-c06926338200"
+                  examples:
+                    d10de989-8884-4ed1-b235-16d7079aa029:
+                      value: "{\n  \"id\": \"0e8dd830-ad98-11e6-bf2e-47644ada7c0f\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+        "153b128e-af28-4183-8787-3a72930542fa":
+          name: "Delete a Contact"
+          method: "DELETE"
+          description: "Deletes a Contact"
+          tags:
+          - "Contacts"
+          securedBy:
+          - scheme: "#/contract/securitySchemes/b3ae5bda-bfdb-4431-9eb0-67137e9838e1"
+            scopes: []
+          responses:
+            "2e08f45f-052a-404b-8d8f-685dcee46df7":
+              status: "200"
+              description: "Status 200"
+  types:
+    "050004af-fb51-4a2a-9013-bdd5e20f4075":
+      name: "Company"
+      type: "OBJECT"
+      description: "The dataType of a Company"
+      section: "#/contract/sections/f2221685-9c6c-4a96-8f0b-da1f6b11fbb9"
+      properties:
+        "7fbb67cc-ca85-4119-bfbc-4bf3e7d4b9ec":
+          name: "id"
+          type: "STRING"
+          description: "Auto-generated primary key field"
+          required: true
+        ccbe22d6-31af-48a7-b551-1bbe19ef1ba4:
+          name: "name"
+          type: "STRING"
+          required: true
+        "0347086f-1a54-4bf2-902b-a4e3b8270ca8":
+          name: "tags"
+          type: "ARRAY"
+          items:
+            type: "STRING"
+            pattern: "[a-zA-Z]+"
+          examples:
+            "255a15ea-0e6c-455f-8501-b4da11d91427":
+              value: "[\"brewery\", \"beer\", \"ale\"]"
+        a9df49b5-07ef-4c0d-baed-3681267d0bfb:
+          name: "address"
+          type: "OBJECT"
+          required: true
+          properties:
+            ca25bc69-6cad-4faf-9a3e-b8c3d4250e4a:
+              name: "street"
+              type: "STRING"
+              required: true
+            "5902f7d2-69d9-4585-82b4-f8fc9b2a471f":
+              name: "city"
+              type: "STRING"
+              required: true
+            "8cd05430-8e42-471e-a14c-72cbc06c7913":
+              name: "zipcode"
+              type: "STRING"
+              required: true
+              pattern: "[0-9]*"
+      examples:
+        "2e65545c-267b-4511-a72e-ce14bb4b3478":
+          value: "{\n  \"id\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\",\n  \"name\": \"George Street Brewery\",\n  \"address\":{\n    \"street\": \"2 place de la Defense\",\n    \"zipcode\": \"92053\",\n    \"city\": \"Paris\"\n  },\n  \"tags\":[\n    \"brewery\",\n    \"beer\",\n    \"ale\"\n  ]\n}"
+    "f70944cc-99cb-4954-b949-c06926338200":
+      name: "Contact"
+      type: "OBJECT"
+      description: "The dataType of a Contact"
+      section: "#/contract/sections/b5406dad-a9b7-4ca0-b172-aaeadc865b90"
+      properties:
+        "7791ab31-a26e-41e7-8c17-663480f41620":
+          name: "id"
+          type: "STRING"
+          description: "Auto-generated primary key field"
+          required: true
+          examples:
+            "156ffc7e-305b-48a5-8499-4c64b4b723be":
+              value: "0e8ffb10-ad98-11e6-bf2e-47644ada7c0f"
+        bb2869ef-a1b1-46b4-b15e-ec309739ae24:
+          name: "firstName"
+          type: "STRING"
+          required: true
+          examples:
+            "8f6342bb-2ca3-48fe-931f-fa7421b2849e":
+              value: "Kurt"
+        "7aa73ac7-701e-4c6c-a522-3b136eae8d2a":
+          name: "lastName"
+          type: "STRING"
+          required: true
+          examples:
+            e8e5afd1-a964-4cef-a4ae-e73b8301aea5:
+              value: "Williams"
+        bbf1da54-7504-4ffe-b3f7-d369084a225d:
+          name: "birthday"
+          type: "INTEGER"
+          format: "INT64"
+          description: "Birthday as unix timestamp (in ms)"
+          examples:
+            "7b45df76-feaa-4d6e-a91e-fde0c57db8e9":
+              value: 173664000000
+            "8d0c24bd-f855-44c7-921b-71f151065d25":
+              value: 383270400000
+        dc15e74d-3949-46f0-be19-cbead9e84ed8:
+          name: "active"
+          type: "BOOLEAN"
+          default: true
+        bab1a54c-7d51-4006-bb27-77fcb8884f14:
+          name: "rank"
+          type: "INTEGER"
+          format: "INT32"
+          minimum: 1
+          examples:
+            "8038ddfc-44d8-4112-9bc5-2de69886195f":
+              value: 1
+            fb2dd0e2-447e-452b-aa56-3d29767c29b6:
+              value: 2
+            "9e86e3b6-c07b-45f0-8e90-3b630377394a":
+              value: 3
+        f784bffb-0857-45a0-8a68-e476d8200c55:
+          name: "company"
+          type: "STRING"
+          description: "This property is a reference to a Company"
+          examples:
+            "540bbe58-9d4b-41fd-897e-cf5696e3eea7":
+              value: "0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f"
+      examples:
+        f63346ff-657d-413a-81a0-1d6c43e108b1:
+          value: "{\n  \"id\": \"0e8dd830-ad98-11e6-bf2e-47644ada7c0f\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"birthday\": 152755200000,\n  \"active\": true,\n  \"rank\": 1,\n  \"company\": \"0e8cedd0-ad98-11e6-bf2e-47644ada7c0f\"\n}"
+    "509ae2b4-6a55-4fb7-ac10-996f6a9c7ce1":
+      name: "Error"
+      type: "OBJECT"
+      description: "This general error structure is used throughout this API."
+      section: "#/contract/sections/c6df14b2-2e7a-48bd-8476-5a838001cb8d"
+      properties:
+        "2b4ab466-5e70-45ab-98cd-841030c5fa95":
+          name: "code"
+          type: "INTEGER"
+          required: true
+          minimum: 400
+          maximum: 599
+        "6e6c06cb-839a-4b3d-9ed0-11c8cdfaafe2":
+          name: "description"
+          type: "STRING"
+          examples:
+            e34e1393-6bf6-425e-b9de-8e17c785c9e8:
+              value: "Bad query parameter [$size]: Invalid integer value [abc]"
+            a354e529-ead4-4326-889c-b27a734346c8:
+              value: "The server understood the request, but is refusing to fulfill it"
+        "0cc74228-3866-400a-818b-0f3fb3d83d36":
+          name: "reasonPhrase"
+          type: "STRING"
+          examples:
+            b1420dfb-9a14-4a5f-9578-ef98b5fbb6f4:
+              value: "Bad Request"
+            b64721ac-dba6-430b-9e06-4b708bd0dc2b:
+              value: "Forbidden"
+      examples:
+        "43f3015b-09fc-4867-b8a1-3e12405e6194":
+          value: "{\n  \"code\": 400,\n  \"description\": \"Bad query parameter [$size]: Invalid integer value [abc]\",\n  \"reasonPhrase\": \"Bad Request\"\n}"
+  texts:
+    fb15cde5-d861-4b22-b4d4-7688f39ac70d:
+      title: "Authentication"
+      content: "This API is secured using Basic Authentication.\n\nAll **read operations are open** and don't require authentication. However, all **write operations require authentication**."
+      section: "#/contract/sections/c6df14b2-2e7a-48bd-8476-5a838001cb8d"
+    a74ab5e8-3c73-4131-9c46-4297141a44e3:
+      title: "Error handling"
+      content: "This API uses standard HTTP status codes to indicate the status of a response.\n\nThere are two main categories of error responses. Each have a different response payload structure.\n\n* Simple errors\n* Detailed errors\n\n\n# Simple errors\n\n| Name | Code | Description |\n| -------- | -------- | -------- |\n| Bad request     | 400     | The request was unacceptable     |\n| Unauthorized     | 401     | The request has not been applied because it lacks valid authentication credentials for the target resource.     |\n| Forbidden     | 403     | The server understood the request, but is refusing to fulfill it     |\n| Not Found     | 404     | The server has not found anything matching the request URI     |\n| Not acceptable     | 406     | The server is unable to return a response in the format that was requested by the client     |\n| Unsupported Media Type     | 415     | The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method     |\n| Too many requests     | 429     | Too many requests hit the API too quickly     |\n| Server error     | 500     | A technical error occured  |\n\n\n\n\n\n\n# Detailed errors\n| Name | Code | Description |\n| -------- | -------- | -------- |\n| Unprocessable entity     | 422     | The server understands the content type of the request entity, and the syntax of the request entity is correct, but was unable to process the contained instructions.     |\n\n\n\n\n"
+      section: "#/contract/sections/c6df14b2-2e7a-48bd-8476-5a838001cb8d"
+components:
+  pathVariables:
+    df804f18-e92c-455c-968b-04bd315b934f:
+      name: "contactid"
+      componentName: "contactid"
+      type: "STRING"
+      description: "Identifier of the Contact"
+      required: true
+      examples:
+        d2d16810-e0d9-4ff1-a05d-fb222631311b:
+          value: "0e8dd830-ad98-11e6-bf2e-47644ada7c0f"
+    "17f2fd39-f376-4cba-a186-1b50f899a393":
+      name: "companyid"
+      componentName: "companyid"
+      type: "STRING"
+      description: "Identifier of the Company"
+      required: true
+      examples:
+        d85b3f26-0990-4a6e-8610-fb4c57998024:
+          value: "0e8c9fb0-ad98-11e6-bf2e-47644ada7c0f"
+  queryParameters:
+    cb8e7792-0703-42b3-9dea-c082086916d6:
+      name: "$size"
+      componentName: "$size"
+      type: "INTEGER"
+      description: "Size of the page to retrieve."
+      examples:
+        a4117076-74f7-4320-95d6-1a13ac18b78b:
+          value: 10
+    "5901db1f-da69-4006-9390-c248fd1d38eb":
+      name: "$page"
+      componentName: "$page"
+      type: "INTEGER"
+      description: "Number of the page to retrieve."
+      examples:
+        "28159a2d-c0c4-437d-bbab-0e6a005f80e4":
+          value: 1
+        "944f560a-9f8a-46da-b5f9-c101d4963a0f":
+          value: 42
+    "85ccf05e-735e-4319-8ca7-aab6a7194c53":
+      name: "$sort"
+      componentName: "$sort"
+      type: "STRING"
+      description: "Order in which to retrieve the results. Multiple sort criteria can be passed."
+      examples:
+        "5ec31c33-3371-431a-9791-0b630329bd90":
+          value: "birthday DESC"
+        "2010bbba-3bf7-4156-ade7-44e6358ee48a":
+          value: "birthday ASC,rank DESC"
+  headers:
+    "4c757c36-0ebe-4a14-881a-2c9855c2ce1e":
+      name: "X-Page-Count"
+      componentName: "X-Page-Count"
+      type: "INTEGER"
+      examples:
+        "26f42b6a-b366-49bf-88b1-f8e5663df164":
+          value: 1
+    fd6743b2-82c3-42a6-8f09-ce141bf74b5e:
+      name: "X-Page-Number"
+      componentName: "X-Page-Number"
+      type: "INTEGER"
+      examples:
+        "0b6f2f1d-5ae9-4206-8656-fb3b12717b72":
+          value: 1
+    "3c5ea6d8-2454-4b3e-afda-8ebbb0b69afe":
+      name: "X-Page-Size"
+      componentName: "X-Page-Size"
+      type: "INTEGER"
+      examples:
+        d189d446-c8f4-495b-a08e-58f898f2c134:
+          value: 25
+    "62aa46d6-002f-4fe5-8044-83d2d6278028":
+      name: "X-Total-Count"
+      componentName: "X-Total-Count"
+      type: "INTEGER"
+      examples:
+        b9611b47-a8d1-4f32-945c-51839ef8fe4b:
+          value: 2
+  responses:
+    "7f0e2971-15be-496d-aae2-d12a64016492":
+      componentName: "Status 400"
+      bodies:
+        "001b7886-fdf7-44e6-9900-b03139d1767c":
+          type: "#/contract/types/509ae2b4-6a55-4fb7-ac10-996f6a9c7ce1"
+          mediaTypes:
+          - "application/json"
+---
+
+
+This is the contacts API

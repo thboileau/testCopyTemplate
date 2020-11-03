@@ -1,0 +1,11 @@
+---
+- simple:
+  - type
+  - simple
+- complex:
+  - arrayof
+  - anyof
+  - oneof
+  - allof
+  - cycleType
+  - component 

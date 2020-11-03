@@ -1,0 +1,25 @@
+{{ $params := .params }}
+{{ if (eq .body.Type "ARRAY" ) }}
+    ARRAY OF 
+    {{ if (isset .body "items" ) }}
+
+        {{ $var := strings.TrimPrefix "#/" .body.Items.Type }} {{ $var2 := $params }} {{ range split $var "/" }} {{ if (isset $var2 . )}} {{ $var2 = index $var2 . }} {{ end }}
+        {{ end }}
+ 
+        {{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+        {{ .body.Items.type }}
+    {{ else }}
+        {{ .body.Items }}
+    {{ end }}
+
+{{ else if (isset .body "type" ) }}
+
+    {{ partial "apis/dataType.html" (dict "params" $params "dataType" .body ) }}
+
+{{ else }}
+bah y a pas de type
+{{ end }}
+
+{{ range .body.Examples }}
+{{ partial "apis/example.html" (dict "params" $params "example" . ) }}
+{{ end }}

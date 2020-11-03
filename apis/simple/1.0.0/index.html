@@ -1,0 +1,160 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "portal_primitive_types"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/resources/06d8d4bd-f3e9-4423-92f1-ee2bd5a38980"
+    resources:
+      "06d8d4bd-f3e9-4423-92f1-ee2bd5a38980":
+        path: "/entity"
+        operations:
+          "383c58ec-3672-41df-adc4-160977fd3bbe":
+            name: "get"
+            method: "GET"
+            description: "get an entity with primitive types"
+            queryParameters:
+              c36ccc03-774d-49dd-90fe-965fb89a45d2:
+                name: "qp_string"
+                type: "STRING"
+                required: false
+                default: "value"
+                enum:
+                - "value1"
+                - "value2"
+                - "value3"
+                minLength: 10
+                maxLength: 100
+                pattern: "*ddfsfsù*"
+              cc3abebd-cfa8-40b4-ae81-0b4e8a433966:
+                name: "qp_number_double"
+                type: "NUMBER"
+                format: "DOUBLE"
+                required: false
+                default: 0
+                enum:
+                - 10
+                - -10
+                - 0
+                minimum: -10
+                maximum: 10
+              bae87144-1756-491f-9d74-c6f4ee9d0d7d:
+                name: "qp_integer"
+                type: "INTEGER"
+                required: false
+              f4452ac6-ee37-4407-a449-008adb998a9b:
+                name: "qp_boolean"
+                type: "BOOLEAN"
+                required: false
+              da8f3c0c-0f5f-4931-8954-f8501bcfa4c9:
+                name: "qp_date"
+                type: "DATE"
+                required: false
+              "32b17988-55a8-4c8c-a5cb-d88d995e09fd":
+                name: "qp_time"
+                type: "TIME"
+                required: false
+              "05e958bf-759d-4a64-b7ac-3d57e68ad037":
+                name: "qp_datetime"
+                type: "DATETIME"
+                format: "RFC3339"
+                required: false
+              b4eaa4e1-1d47-419f-8dd9-a32353c7dd18:
+                name: "qp_file"
+                type: "FILE"
+                required: false
+                minLength: 0
+                maxLength: 100000
+                fileTypes:
+                - "json"
+                - "yaml"
+              a8e961c1-f812-4eb9-9f43-6d96249a228c:
+                name: "qp_object"
+                type: "OBJECT"
+                required: false
+            headers:
+              a6c3fcf8-145c-4bf4-a3f8-5d03169bdfd8:
+                name: "h_string"
+                type: "STRING"
+                required: false
+              ae6b6d62-1c4b-46e0-bc8c-1aa4bd04a287:
+                name: "h_number"
+                type: "NUMBER"
+                required: false
+              cd18c882-6bc1-42d9-b8c5-70e9c19f010e:
+                name: "h_integer"
+                type: "INTEGER"
+                required: false
+              b188cf78-4a0a-47cc-8099-5b423052c36f:
+                name: "h_boolean"
+                type: "BOOLEAN"
+                required: false
+              "09f32ab6-d802-40fc-983e-6f4e13efc784":
+                name: "h_date"
+                type: "DATE"
+                required: false
+              cd85c5e3-86c6-4991-8426-8c3b5ab7d736:
+                name: "h_time"
+                type: "TIME"
+                required: false
+              "94b18490-7310-43c2-9b9d-adac5c8493c6":
+                name: "h_datetime"
+                type: "DATETIME"
+                required: false
+              "873c6197-41cf-40ab-bcd4-82ee7e908e8d":
+                name: "h_file"
+                type: "FILE"
+                required: false
+            responses:
+              "666d6a3f-0464-475c-881a-125ee2fa7155":
+                status: "200"
+                headers:
+                  "5fd2248e-1c2e-4781-9072-e1061991412e":
+                    name: "h_string"
+                    type: "STRING"
+                    required: false
+                  "3c44ad2d-5aa4-49ab-8ad6-84c0d5e91e73":
+                    name: "h_number"
+                    type: "NUMBER"
+                    required: false
+                  ddc48dcb-090c-40a4-8efc-684c76cad7d1:
+                    name: "h_integer"
+                    type: "INTEGER"
+                    required: false
+                  c7615dc9-cd44-4a00-bec2-76ad08bac703:
+                    name: "h_boolean"
+                    type: "BOOLEAN"
+                    required: false
+                  e99f0777-df16-446e-a65a-e8a9ee207d0c:
+                    name: "h_date"
+                    type: "DATE"
+                    required: false
+                  "103f0630-40c5-4629-b377-011f96261bf5":
+                    name: "h_time"
+                    type: "TIME"
+                    required: false
+                  "56d50a71-0e17-4f85-8681-6149411e3a7c":
+                    name: "h_datetime"
+                    type: "DATETIME"
+                    required: false
+                  "20d8eb62-5c39-4286-b44e-71b2fdf797fb":
+                    name: "h_file"
+                    type: "FILE"
+                    required: false
+                bodies:
+                  f51d099e-7566-4167-bb2e-f6b5c817da0a:
+                    type: "OBJECT"
+                    properties:
+                      "38c55bb6-617f-45b3-8631-8e780a756516":
+                        name: "string"
+                        type: "STRING"
+                        required: false
+components: {}
+---

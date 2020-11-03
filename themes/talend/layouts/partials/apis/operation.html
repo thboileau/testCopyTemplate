@@ -1,0 +1,41 @@
+{{ $params := .params }}
+
+<h3>{{ .operation.Method }} {{ .operation.Name }}</h3>
+
+<b>{{ .operation.description | markdownify }}</b>
+
+{{ .operation.tags }}
+
+{{/* compute the real securedBy (check local, parent resource, and global security)
+and according to the scheme, call  
+{{ .operation.securedBy }} 
+    {{ partial "apis/securityScheme.html" (dict "params" $params "securityScheme" $securityScheme ) }}
+*/}}
+
+
+{{ range .operation.headers }}
+{{ partial "apis/dataType.html" (dict "params" $params "dataType" . ) }}    
+{{ end }}
+{{ range .operation.queryParameters }}
+{{ partial "apis/dataType.html" (dict "params" $params "dataType" . ) }}    
+{{ end }}
+
+
+{{ range .operation.bodies }}
+{{ partial "apis/body.html" (dict "params" $params "body" . ) }}    
+{{ end }}
+
+
+{{ range .operation.Responses }}
+
+{{ if (isset . "reference") }}
+    {{ $status := .status }}
+    {{ $var := strings.TrimPrefix "#/" .Reference }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+    {{ partial "apis/response.html" (dict "params" $params "response" $var2 "status" $status ) }}
+{{ else }}
+    {{ partial "apis/response.html" (dict "params" $params "response" . ) }}
+{{ end }}
+
+{{ end }}
+
+

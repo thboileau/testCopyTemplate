@@ -1,0 +1,97 @@
+{{ $params := .params }}
+
+
+{{ if (hasPrefix .dataType.type "#/contract/types/") }}
+	{{ $var := strings.TrimPrefix "#/" .dataType.type }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+    {{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+{{ else if (hasPrefix .dataType.type "#/components/") }}
+	{{ $var := strings.TrimPrefix "#/" .dataType.type }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+	{{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+{{ else }}
+<hr>
+<h5>TYPE {{ if (isset .dataType "name")}} {{ .dataType.name }} {{ end }} </h5>
+{{ .dataType | jsonify}}
+
+	{{ if (isset .dataType "description")}}<p>{{ .dataType.description | markdownify }}</p>{{ end }}
+
+<ul>
+	<li>type: {{ .dataType.type }}</li>
+{{- if (isset .dataType "componentname" )}}	<li>componentname: (en tant que component seulement) {{ .dataType.componentname }}</li>{{end}}
+	<li>required: {{ if (isset .dataType "required")}} {{ .dataType.Required }}{{end}}</li>
+	<li>default : {{ .dataType.default }}</li>
+	<li>restriction: {{ .dataType.restriction }} {{/*  soit read_only, write_only, none */}}</li>
+	<li>additional properties: {{ .dataType.additionalProperties }}</li>
+
+	{{ if (eq .dataType.type "ARRAY") }}
+	<li>unique items: {{ .dataType.uniqueItems }}</li>
+	<li>min items: {{ .dataType.minItems }}</li>
+	<li>max items: {{ .dataType.maxItems }}</li>
+	<li>items: {{ partial "apis/dataType.html" (dict "params" $params "dataType" .dataType.items  "recursion" "true") }}</li> 	{{/* TODO handle items. */}}
+
+	{{ else if (eq .dataType.type "ANYOF") }}
+
+	    {{ range .dataType.anyof }}
+	        {{ $var := strings.TrimPrefix "#/" . }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+	        {{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+	    {{ end }}
+
+	{{ else if (eq .dataType.type "ONEOF") }}
+
+	    {{ range .dataType.oneof }}
+	        {{ $var := strings.TrimPrefix "#/" . }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+	        {{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+	    {{ end }}
+
+	{{ else if (eq .dataType.type "ALLOF") }}
+
+	    {{ range .dataType.allof }}
+	        {{ $var := strings.TrimPrefix "#/" . }} {{ $var2 := $params }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+	        {{ partial "apis/dataType.html" (dict "params" $params "dataType" $var2 ) }}
+	    {{ end }}
+
+	{{ else if (eq .dataType.type "DATETIME") }}
+	<li>format: {{ .dataType.format }}</li>
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	{{ else if (eq .dataType.type "DATE") }}
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	{{ else if (eq .dataType.type "TIME") }}
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	{{ else if (eq .dataType.type "BOOLEAN") }}
+
+	{{ else if (eq .dataType.type "OBJECT") }}
+
+	{{ else if (eq .dataType.type "INTEGER") }}
+	<li>format: {{ .dataType.format }}</li>
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	<li>min: {{ .dataType.minimum }}</li>
+	<li>max: {{ .dataType.maximum }}</li>
+	{{ else if (eq .dataType.type "NUMBER") }}
+	<li>format: {{ .dataType.format }}</li>
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	<li>min: {{ .dataType.minimum }}</li>
+	<li>max: {{ .dataType.maximum }}</li>
+	{{ else if (eq .dataType.type "STRING") }}
+	<li>format: {{ .dataType.format }}</li>
+	<li>enum: {{ range .dataType.enum }} {{.}}{{ end}}</li>
+	<li>min length: {{ .dataType.minLength }}</li>
+	<li>max length: {{ .dataType.maxLength }}</li>
+	<li>pattern: {{ .dataType.pattern }}</li>
+	{{ else if (eq .dataType.type "FILE") }}
+	<li>file types: {{ range .dataType.fileTypes }} {{.}}{{ end}}</li>
+	<li>min length: {{ .dataType.minLength }}</li>
+	<li>max length: {{ .dataType.maxLength }}</li>
+	{{ end }}
+</ul>
+
+{{end}}
+
+<ul>
+{{ range .dataType.properties }}
+	<li>{{ .name }} {{ .required }} {{ .type }}</li> {{/* TODO traiter les propriétés complexes */}}
+{{ end }}
+</ul>
+
+{{ range .dataType.examples }}
+{{ partial "apis/example.html" (dict "params" $params "example" . ) }}
+{{ end }}
+

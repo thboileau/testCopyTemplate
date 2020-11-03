@@ -1,0 +1,39 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "cycle_type"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/resources/7a1bc263-a638-481d-abc2-fffeb079ccb5"
+    - "#/contract/types/9a8d237e-5768-4ea9-842b-06145121268a"
+    resources:
+      "7a1bc263-a638-481d-abc2-fffeb079ccb5":
+        path: "/get"
+        operations:
+          "903a0123-1db0-443f-847f-2cc4318b5412":
+            name: "cycle_type"
+            method: "GET"
+            responses:
+              d446a584-f634-439b-bae9-427f8e279964:
+                status: "200"
+                bodies:
+                  dd1c9708-33b3-4661-b716-a47de9822b03:
+                    type: "#/contract/types/9a8d237e-5768-4ea9-842b-06145121268a"
+    types:
+      "9a8d237e-5768-4ea9-842b-06145121268a":
+        name: "cycle_type"
+        type: "OBJECT"
+        properties:
+          "3004352c-b4a7-43eb-84b9-29ed96664bed":
+            name: "cycle"
+            type: "#/contract/types/9a8d237e-5768-4ea9-842b-06145121268a"
+            required: false
+  components: {}
+---

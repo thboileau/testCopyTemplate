@@ -1,0 +1,9 @@
+<h2>{{ .resource.Path }}</h2>
+
+{{ $params := .params }}
+
+{{ range .resource.operations }}
+
+{{ partial "apis/operation.html" (dict "params" $params "operation" . ) }}
+
+{{ end }}

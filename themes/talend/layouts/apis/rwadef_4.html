@@ -1,0 +1,39 @@
+{{ .Page.Title | default "API name" }}
+
+{{ range .Params.Rwadef.Contract.unsortedElementOrder }}
+        {{ $var := strings.TrimPrefix "#/" . }} {{ $var2 := $.Params.Rwadef }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+
+        {{ if (hasPrefix . "#/contract/texts/") }}
+            {{ partial "apis/text.html" (dict "params" $.Params.Rwadef "text" $var2 )  }}
+        {{ else if (hasPrefix . "#/contract/resources/") }}
+            {{ partial "apis/resource.html" (dict "params" $.Params.Rwadef "resource" $var2 ) }}
+        {{ else if (hasPrefix . "#/contract/types/") }}
+
+        {{ else if (hasPrefix . "#/contract/components/") }}
+
+        {{ else }}
+           KIKOU {{ . }}
+        {{ end }}
+{{ end }}
+
+{{ range .Params.Rwadef.Contract.Sections }}
+<hr>
+    Section {{.name}}
+    {{ range .elementOrder }}
+
+        {{ $var := strings.TrimPrefix "#/" . }} {{ $var2 := $.Params.Rwadef }} {{ range split $var "/" }} {{ $var2 = index $var2 . }} {{ end }}
+
+        {{ if (hasPrefix . "#/contract/texts/") }}
+            {{ partial "apis/text.html" (dict "params" $.Params.Rwadef "text" $var2 )  }}
+        {{ else if (hasPrefix . "#/contract/resources/") }}
+            {{ partial "apis/resource.html" (dict "params" $.Params.Rwadef "resource" $var2 ) }}
+        {{ else if (hasPrefix . "#/contract/types/") }}
+
+        {{ else if (hasPrefix . "#/contract/components/") }}
+
+        {{ else }}
+           KIKOU {{ . }}
+        {{ end }}
+
+    {{end}}
+{{ end }}

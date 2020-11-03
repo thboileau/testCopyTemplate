@@ -1,0 +1,95 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "portal_arrayof_type"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/resources/97f1c013-a58b-4099-b6ea-e36c7f85eea3"
+    - "#/contract/types/595104db-8447-4c1d-8acb-0891659ea431"
+    resources:
+      "97f1c013-a58b-4099-b6ea-e36c7f85eea3":
+        path: "/array"
+        operations:
+          f8a82816-b629-4aeb-a66b-a20094626eeb:
+            name: "list"
+            method: "GET"
+            queryParameters:
+              "75e05ea3-3ea4-4cf7-a05f-6c09e2d7752c":
+                name: "qp_arrayof_string"
+                type: "ARRAY"
+                required: false
+                items:
+                  type: "STRING"
+                  required: false
+                uniqueItems: true
+                minItems: 10
+                maxItems: 1000
+              "35160d14-b417-4b96-9e09-3e1141280b67":
+                name: "qp_array_of_type"
+                type: "ARRAY"
+                required: false
+                items:
+                  type: "#/contract/types/595104db-8447-4c1d-8acb-0891659ea431"
+                  required: false
+              bd96784e-0f7c-462d-986d-e35cdd7d6329:
+                name: "qp_array_of_object"
+                type: "ARRAY"
+                required: false
+                items:
+                  type: "OBJECT"
+                  required: false
+                  properties:
+                    e693f39c-1ffc-433b-9f0c-bfd01d0176aa:
+                      name: "property1"
+                      type: "STRING"
+                      required: false
+                    "501fd973-e114-42e8-adbc-f42cbde95613":
+                      name: "property2"
+                      type: "STRING"
+                      required: false
+            responses:
+              c8222393-f50c-449d-b263-1175be796210:
+                status: "200"
+                headers:
+                  a5844d36-8117-4347-affd-8846805a0301:
+                    name: "h_arrayof_type"
+                    type: "ARRAY"
+                    required: false
+                    items:
+                      type: "#/contract/types/595104db-8447-4c1d-8acb-0891659ea431"
+                      required: false
+                bodies:
+                  "2cd1e8bc-832e-488f-a7be-194252305bdb":
+                    type: "OBJECT"
+                    properties:
+                      e8e40a37-97fd-4f9d-8ae0-476a8751566b:
+                        name: "p_arrayof_string"
+                        type: "ARRAY"
+                        required: false
+                        items:
+                          type: "STRING"
+                          required: false
+                        uniqueItems: true
+                        minItems: 10
+                        maxItems: 100
+    types:
+      "595104db-8447-4c1d-8acb-0891659ea431":
+        name: "simpletype"
+        type: "OBJECT"
+        properties:
+          f11312a5-ecdb-4fab-9d32-35e15411e2c0:
+            name: "string"
+            type: "STRING"
+            required: false
+            enum:
+            - "value1"
+            - "value2"
+  components: {}
+---

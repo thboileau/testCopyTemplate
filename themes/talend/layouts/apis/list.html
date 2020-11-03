@@ -1,0 +1,29 @@
+{{/* Display pages by domain
+TODO handle the default domain
+ */}}
+
+{{ range .Site.Data.toc }}
+<p>
+    {{ range $domainName, $apiNames := . }}
+        <p>{{ $domainName }}</p>
+        <ul>
+        {{ range $apiNames }}
+            {{ $var :=  (print "apis/" . "/") }}
+            {{ range $.Site.Pages }}
+                {{ if (hasPrefix .Path $var ) }}
+            <li><a href="{{ .Permalink }}">{{ .Params.rwadef.info.name }} - {{ .Params.rwadef.info.Version }}</a></li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        </ul>
+    {{ end }}
+</p>
+{{ else }}
+<ul>
+    {{ range $.Site.Pages }}
+        {{ if (hasPrefix .Path "apis/" ) }}
+    <li><a href="{{ .Permalink }}">{{ .Params.rwadef.info.name }} - {{ .Params.rwadef.info.Version }}</a></li>
+        {{ end }}
+    {{ end }}
+</ul>
+{{ end }}

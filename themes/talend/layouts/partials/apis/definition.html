@@ -1,0 +1,11 @@
+<p>definition</p>
+<p>spec version: {{ .SpecVersion }}</p>
+<p>name: {{ .Info.Name }}</p>
+<p>description: {{ .Info.Description | markdownify }}</p>
+<p>version: {{ .Info.Version }}</p>
+<p>terms of use: {{ .Info.termsOfService }}</p>
+<p>license name: {{ .Info.License.Name }}</p>
+<p>license url: {{ .Info.License.Url }}</p>
+<p>contact name: {{ .Info.Contact.Name }}</p>
+<p>contact email: {{ .Info.Contact.Email }}</p>
+<p>contact url: {{ .Info.Contact.Url }}</p>

@@ -1,0 +1,52 @@
+<p> Security Scheme</p>
+{{ $params := .params }}
+
+{{ .securityScheme.name }}
+{{ .securityScheme.type }}
+{{/* could be
+    basic, digest, bearer, oauth1, oauth2, openId, passThrough, custom
+*/}}
+
+{{ .securityScheme.description | markdownify }}
+
+{{ range .securityScheme.describedBy.headers }}
+{{ partial "apis/dataType.html" (dict "params" $params "dataType" . ) }}    
+{{ end }}
+{{ range .securityScheme.describedBy.queryParameters }}
+{{ partial "apis/dataType.html" (dict "params" $params "dataType" . ) }}    
+{{ end }}
+
+{{ .securityScheme.settings.authorizationUri }}
+{{ .securityScheme.settings.accessTokenUri }}
+{{ .securityScheme.settings.openIdConnectUrl }}
+{{ .securityScheme.settings.refreshUrl }}
+{{ .securityScheme.settings.bearerFormat }}
+
+{{ .securityScheme.authorizationGrants }}
+{{/* could be several of the followings
+    AUTHORIZATION_CODE {{
+        value("authorizationCode")
+                .requiresAuthorizationUrl(true)
+                .requiresTokenUrl(true);
+    }},
+    CLIENT_CREDENTIALS {{
+        value("clientCredentials")
+                .requiresAuthorizationUrl(false)
+                .requiresTokenUrl(true);
+    }},
+    IMPLICIT {{
+        value("implicit")
+                .requiresAuthorizationUrl(true)
+                .requiresTokenUrl(false);
+    }},
+    PASSWORD {{
+        value("password")
+                .requiresAuthorizationUrl(false)
+                .requiresTokenUrl(true);
+    }};
+*/}}
+
+{{ range .securityScheme.scope }}
+    {{ .name }}
+    {{ .description | markdownify }}
+{{ end }}

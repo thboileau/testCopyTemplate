@@ -1,0 +1,90 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "portal_component"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/types/6c9784aa-386c-4ad4-8815-6e72e2c0e8c4"
+    - "#/contract/resources/1d76c76a-c5eb-452e-a5d0-aa5507963c6e"
+    - "#/contract/resources/3ba7c601-096b-4d0c-b11a-80ec789bffa0"
+    resources:
+      "1d76c76a-c5eb-452e-a5d0-aa5507963c6e":
+        path: "/test"
+      "3ba7c601-096b-4d0c-b11a-80ec789bffa0":
+        path: "/test/{pathVariable_object}"
+        pathVariables:
+          "67c77f40-2da9-464b-af34-00d5fd27f93c":
+            name: "pathVariable_object"
+            type: "STRING"
+            required: true
+        operations:
+          dbfaf424-7955-4a17-b4b6-fd62373b2d84:
+            name: "post"
+            method: "POST"
+            queryParameters:
+              d3bbe305-fea2-4284-a12d-97f9cbed3ab6:
+                type: "#/components/queryParameters/045d0dbd-14b7-45c3-8b2e-274c2f3e90b4"
+            headers:
+              "1fedbe70-e465-465e-92db-e8738f3ffb14":
+                type: "#/components/headers/065ed056-b875-42a4-9cc7-1aef05addbd6"
+            responses:
+              "64e9720c-c343-4312-83e1-8c840e166c4e":
+                status: "1XX"
+                reference: "#/components/responses/8b15942f-3d36-4791-8c4d-7419aa2e8d0d"
+    types:
+      "6c9784aa-386c-4ad4-8815-6e72e2c0e8c4":
+        name: "type"
+        type: "BOOLEAN"
+  components:
+    pathVariables:
+      "7e0c5d94-e2d4-4060-9170-aa7a05796cf4":
+        name: "pathVariable_object"
+        componentName: "pathVariable_object"
+        type: "OBJECT"
+        required: true
+        properties:
+          "79de3ad6-2210-4ebd-8319-6f6a82ea227a":
+            name: "property1"
+            type: "STRING"
+            required: false
+    queryParameters:
+      "045d0dbd-14b7-45c3-8b2e-274c2f3e90b4":
+        name: "qp_arrayString"
+        componentName: "qp_arrayString"
+        type: "ARRAY"
+        required: false
+        items:
+          type: "STRING"
+          required: false
+    headers:
+      "065ed056-b875-42a4-9cc7-1aef05addbd6":
+        name: "hp_type"
+        componentName: "hp_type"
+        type: "#/contract/types/6c9784aa-386c-4ad4-8815-6e72e2c0e8c4"
+        required: false
+    responses:
+      "8b15942f-3d36-4791-8c4d-7419aa2e8d0d":
+        componentName: "response"
+        headers:
+          "5727bf4f-4e15-4721-b3a2-55d50f43a07e":
+            name: "header1"
+            type: "STRING"
+            required: false
+          f2dfb523-c672-4a8f-9d46-a0c74ae70ad4:
+            name: "header2"
+            type: "STRING"
+            required: false
+        bodies:
+          "62a5788a-b94c-41ab-a22a-f259aa5f0a75":
+            type: "#/contract/types/6c9784aa-386c-4ad4-8815-6e72e2c0e8c4"
+            mediaTypes:
+            - "application/xml"
+            - "application/x-yaml"
+---

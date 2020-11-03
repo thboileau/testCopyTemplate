@@ -1,0 +1,13 @@
+{{ $params := .params }}
+<h4>RESPONSE {{ if (isset . "status") }} {{ .status }} {{ else }} {{ .response.Status }} {{ end }} </h4>
+
+<p>{{ .response.Description | markdownify }}</p>
+
+{{ range .response.headers }}
+{{ partial "apis/dataType.html" (dict "params" $params "dataType" . ) }}    
+{{ end }}
+
+
+{{ range .response.Bodies }}
+{{ partial "apis/body.html" (dict "params" $params "body" . ) }}
+{{ end }}

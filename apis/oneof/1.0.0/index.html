@@ -1,0 +1,65 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "oneof"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/resources/a287c97b-2e75-428b-9fa0-731d3ec20220"
+    - "#/contract/types/ca1e54b9-992c-4853-b3a6-8e75e24a6126"
+    - "#/contract/types/3d3b32c5-ebdb-4f3b-8e3e-6aeb22225c15"
+    - "#/contract/types/c39b676d-9341-49e8-a76e-b688669177e6"
+    resources:
+      a287c97b-2e75-428b-9fa0-731d3ec20220:
+        path: "/create"
+        operations:
+          "18ac950e-0ad1-42ed-b0fe-c3cc94de1f93":
+            name: "oneof"
+            method: "POST"
+            bodies:
+              ec22a969-a112-42ba-bb6d-654fbcd14ad9:
+                type: "ONEOF"
+                oneOf:
+                - "#/contract/types/ca1e54b9-992c-4853-b3a6-8e75e24a6126"
+                - "#/contract/types/3d3b32c5-ebdb-4f3b-8e3e-6aeb22225c15"
+                - "#/contract/types/c39b676d-9341-49e8-a76e-b688669177e6"
+            responses:
+              cc796ceb-d58b-4f09-82ac-5164372e5730:
+                status: "200"
+                bodies:
+                  "1fd6a88a-5d46-417a-96a0-7ceabb05b8a9":
+                    type: "ONEOF"
+                    oneOf:
+                    - "#/contract/types/ca1e54b9-992c-4853-b3a6-8e75e24a6126"
+                    - "#/contract/types/3d3b32c5-ebdb-4f3b-8e3e-6aeb22225c15"
+                    - "#/contract/types/c39b676d-9341-49e8-a76e-b688669177e6"
+    types:
+      ca1e54b9-992c-4853-b3a6-8e75e24a6126:
+        name: "type1"
+        type: "OBJECT"
+        properties:
+          "924d2e4d-d20e-4287-af9a-2ff405047b1f":
+            name: "property1"
+            type: "STRING"
+            required: false
+          cf95000d-42c3-4119-bb00-13b88dcfbdde:
+            name: "property2"
+            type: "STRING"
+            required: false
+      "3d3b32c5-ebdb-4f3b-8e3e-6aeb22225c15":
+        name: "type2arrayofstring"
+        type: "ARRAY"
+        items:
+          type: "STRING"
+          required: false
+      c39b676d-9341-49e8-a76e-b688669177e6:
+        name: "oneof"
+        type: "ONEOF"
+  components: {}
+---

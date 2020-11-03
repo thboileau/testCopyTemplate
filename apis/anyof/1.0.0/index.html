@@ -1,0 +1,68 @@
+---
+type: apis
+layout: rwadef_4
+rwadef:
+  specVersion: "4.0.0"
+  info:
+    name: "anyof"
+    version: "1.0.0"
+    description: "No description"
+  contract:
+    mediaTypes:
+    - "application/json"
+    unsortedElementOrder:
+    - "#/contract/resources/75ff395d-d576-4163-b4a0-c72fb2fe5ccf"
+    - "#/contract/types/be6ddc0f-1b9e-4181-b807-e7a331e00b60"
+    - "#/contract/types/a462e3ba-416d-4d08-a877-b8210df41d56"
+    - "#/contract/types/c44e3f43-a33e-4ef5-a9f8-e67557e6eddb"
+    resources:
+      "75ff395d-d576-4163-b4a0-c72fb2fe5ccf":
+        path: "/create"
+        operations:
+          "4d3d879a-1ad0-4098-b0ee-dba5c8d7ce7f":
+            name: "anyof"
+            method: "POST"
+            bodies:
+              "081897b3-d867-4cd5-bc44-7c224ded2c7d":
+                type: "ANYOF"
+                anyOf:
+                - "#/contract/types/be6ddc0f-1b9e-4181-b807-e7a331e00b60"
+                - "#/contract/types/a462e3ba-416d-4d08-a877-b8210df41d56"
+                - "#/contract/types/c44e3f43-a33e-4ef5-a9f8-e67557e6eddb"
+            responses:
+              "11d94318-cf26-496e-a81e-76ded1b04f6a":
+                status: "200"
+                bodies:
+                  d0491a7e-469a-4f1e-bcb9-ea7c59be041e:
+                    type: "ANYOF"
+                    anyOf:
+                    - "#/contract/types/be6ddc0f-1b9e-4181-b807-e7a331e00b60"
+                    - "#/contract/types/a462e3ba-416d-4d08-a877-b8210df41d56"
+                    - "#/contract/types/c44e3f43-a33e-4ef5-a9f8-e67557e6eddb"
+    types:
+      be6ddc0f-1b9e-4181-b807-e7a331e00b60:
+        name: "type1"
+        type: "OBJECT"
+        properties:
+          "7e588c7a-d60c-4f8a-9987-a50960ac9e42":
+            name: "property1"
+            type: "STRING"
+            required: false
+          "2f75f0bd-e87b-4316-aa0f-0e9c0761b187":
+            name: "property2"
+            type: "STRING"
+            required: false
+      a462e3ba-416d-4d08-a877-b8210df41d56:
+        name: "type2arrayofstring"
+        type: "ARRAY"
+        items:
+          type: "STRING"
+          required: false
+      c44e3f43-a33e-4ef5-a9f8-e67557e6eddb:
+        name: "anyof"
+        type: "ANYOF"
+        anyOf:
+        - "#/contract/types/be6ddc0f-1b9e-4181-b807-e7a331e00b60"
+        - "#/contract/types/a462e3ba-416d-4d08-a877-b8210df41d56"
+  components: {}
+---
